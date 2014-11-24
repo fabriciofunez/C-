@@ -1,0 +1,27 @@
+using System;
+using System .Collections . Generic;
+using System .Linq;
+using System .Text;
+using System .Threading . Tasks;
+
+namespace Project1C
+{
+    class csEncriptar
+    {
+        public static String Encriptar( string Cadena)
+        {
+            String Result = string. Empty;
+            byte [] Encrypted = System .Text . Encoding. Unicode .GetBytes(Cadena);
+            Result = Convert . ToBase64String(Encrypted);
+            return Result;
+        }
+
+        public static string Desencriptar( string Cadena)
+        {
+            string result = string. Empty;
+            byte [] Decryted = Convert. FromBase64String(Cadena);
+            result = System. Text .Encoding . Unicode. GetString(Decryted);
+            return result;
+        }
+    }
+}
