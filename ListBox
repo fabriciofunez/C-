@@ -1,0 +1,54 @@
+sing System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace Project1C
+{
+    public partial class frmListBox : Form
+    {
+        public frmListBox()
+        {
+            InitializeComponent();
+        }
+
+        private void frmListBox_Load(object sender, EventArgs e)
+        {
+            txtAdd.Focus();
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            lstBoxRoll.Items.Add(txtAdd.Text);
+            this.txtAdd.Text = string.Empty;
+            this.txtAdd.Focus();
+        }
+
+        private void b_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               StreamWriter save = new StreamWriter(@"C:\Users\CFunez\Documents\Visual Studio 2013\Projects\Project1C\Project1C\test.txt");
+               // StreamWriter save = new StreamWriter(@"C:\test.txt");
+                foreach (object List in lstBoxRoll.Items)
+                {
+                    save.WriteLine(List.ToString());
+                }
+                save.Close();
+                MessageBox.Show("Su Lista ha sido Guardada Exitosamente");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+
+        }
+    }
+}
